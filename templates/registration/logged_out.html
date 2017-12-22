@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}Logged out{% endblock %}
+
+{% block header %}
+        <link rel="stylesheet" href="{% static 'connect4/base.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row-fluid text-center justify-content-center">
+        <div class="d-inline-block text-center shrunk">
+            <div class="text-center">
+                <p>Logged out!</p>
+            </div>
+            <div class="d-inline-block text-left shrunk">
+
+                <a href="{% url 'login'%}">Click here to login again.</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

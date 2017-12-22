@@ -1,0 +1,13 @@
+                                    <tr>
+                                        <td>
+                                            {% if game.player1 != request.user %}
+                                            Vs. {{ game.player2.username }}
+                                            {% else %}
+                                            Vs. {{ game.player1.username }}
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ game.status }}</td>
+                                        <td>
+                                            <a href="{{ game.id }}/" class="btn btn-primary">Rejoin</a>
+                                        </td>
+                                    </tr>

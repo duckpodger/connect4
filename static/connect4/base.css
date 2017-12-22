@@ -1,0 +1,27 @@
+.d-inline-block {
+    display: inline-block;
+}
+
+.va-top {
+    vertical-align: top;
+}
+
+.shrunk{
+    width: auto;
+    margin: auto;
+ }
+
+input {
+    width: 100%;
+}
+
+.scroll {
+    position: block;
+    overflow-y: scroll;
+    height: 600px;
+}
+
+.errorlist {
+    color: red;
+    float: right!important;
+}

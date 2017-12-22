@@ -1,0 +1,19 @@
+                                    <tr id="{{ game }}">
+                                        <td>
+                                            {% if game.player1 != request.user %}
+                                            {{ game }}
+                                            {% else %}
+                                            Waiting for others to join
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ game.created_date }}</td>
+                                        <td>
+                                            {% if game.player1 != request.user %}
+                                            <form method="PUT" action="{{ game.id }}/" class="joinGame">
+                                                {% csrf_token %}
+                                                <input class="game" type="text" hidden="true" value="{{ game.id }}">
+                                                <button type="submit" class="btn btn-primary">Join game</button>
+                                            </form>
+                                            {% endif %}
+                                        </td>
+                                    </tr>

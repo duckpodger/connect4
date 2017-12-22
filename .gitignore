@@ -15,6 +15,11 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+venv/
+node_modules/
+staticfiles/
+connect4/migrations/
+
 # C extensions
 *.so
 

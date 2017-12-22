@@ -1,0 +1,12 @@
+{
+  "name": "connect4",
+  "version": "1.0.0",
+  "description": "Connect 4 by matt",
+  "author": "Matt Amos",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "django-channels": "^1.1.8",
+    "jquery": "^3.2.1",
+    "svg.js": "^2.6.3"
+  }
+}

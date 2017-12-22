@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+            {{ game }}
+{% endblock %}
+
+
+{% block header %}
+        <link rel="stylesheet" href="{% static 'connect4/game_board.css' %}">
+{% endblock %}
+
+
+{% block body %}
+        {% include 'menu.html' %}
+        <div class="container-fluid">
+            <div class="overlay hidden">
+                <div id="winner"></div>
+            </div>
+            <div class="row-fluid justify-content-center">
+                <h1 class="text-center"><span id="player1">{{ game.player1.username }}</span> vs <span id="player2">{{ game.player2.username }}</span></h1>
+                <p id="status" class="text-center">{{ game.status }}</p>
+            </div>
+            <div class="row-fluid">
+                <div id="board"></div>
+            </div>
+        </div>
+{% endblock %}
+
+
+{% block scripts %}
+        <script type="text/javascript">
+            var initialCoins = {% autoescape off %}{{ coins }}{% endautoescape %}
+            var player1 = "{{ game.player1 }}", player2 = "{{ game.player2 }}", thisPlayer = "{{ request.user.username }}"
+            var thisPlayerId = {{ request.user.id }}
+            var wsUrl = '/connect4/games/{{ game.id }}', gameId = {{ game.id }}
+            var playerId2Idx = { {{ game.player1.id }}: 0, {{ game.player2.id}}: 1 }
+            var winner = {% if game.winner != "" %} "{{ game.winner }}"{% else %} null{% endif %}
+        </script>
+        <script src="{% static 'connect4/game_board.js' %}"></script>
+{% endblock %}

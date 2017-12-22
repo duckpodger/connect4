@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+            Games for {{ request.user.username }}
+{% endblock %}
+
+
+{% block header %}
+    <link rel="stylesheet" href="{% static 'connect4/base.css' %}">
+{% endblock %}
+
+
+{% block body %}
+            {% include 'menu.html' %}
+            <div class="container-fluid">
+                <div class="row-fluid text-center">
+                    <div class="col-fluid d-inline-block va-top">
+                        <h1 class="text-center">Games underway</h1>
+                        <div class="text-center d-inline-block">
+                            <!-- Todo I hate doing web layouts I want the scroll bar on the boday of the table only too much faff -->
+                            <div class="scroll">
+                                <table class="table table-striped table-responsive table-bordered table-shrunk">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Game</th>
+                                        <th scope="col">Created</th>
+                                        <th scope="col">Rejoin</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="scroll">
+                                    {% for game in playing %}
+                                    {% include 'playing_game.html' %}
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-fluid d-inline-block">
+                    </div>
+                    <div class="col-fluid d-inline-block va-top">
+                        <h1 class="text-center">Games to join</h1>
+                        <div class="d-inline-block text-center">
+                            <!-- Todo I hate doing web layouts I want the scroll bar on the boday of the table only too much faff -->
+                            <div class="scroll">
+                                <table id="waitingGames" class="table table-striped table-responsive table-bordered shrunk">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Game</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Join</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for game in waiting %}
+                                            {% include 'waiting_game.html' %}
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <form method="post" action="." id="newGame" class="pull-right">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary">New game</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}
+
+
+{% block scripts %}
+    <script type="text/javascript" src="{{STATIC_URL }}connect4/games.js"></script>
+{% endblock %}

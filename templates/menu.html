@@ -1,0 +1,10 @@
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-text">You are player, <strong>{{ user.get_username }}</strong></div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'games' %}">Games</a></li>
+                    <li><a href="{% url 'logout' %}">Log out</a></li>
+                </ul>
+
+            </div>
+        </nav>
