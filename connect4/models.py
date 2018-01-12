@@ -5,7 +5,6 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.db import models
 from channels.binding.websockets import WebsocketBinding
 import datetime
-from django.db.models import Q
 
 # Create your models here.
 
@@ -158,4 +157,6 @@ class CoinBinding(WebsocketBinding):
                 consecutive += 1
             else:
                 consecutive = 0
-        return consecutive >= 4
+            if consecutive >= 4:
+                return True
+        return False

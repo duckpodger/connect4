@@ -13,7 +13,7 @@ var boardWidth = (2 * borderWidth) + (columns * columnWidth) + colMargin
 var textSize = 40
 
 // since we alternate turns and player 1 always goes first
-var nextPlayerIdx = (initialCoins.length + 1) % 2
+var nextPlayerIdx = (initialCoins.length) % 2
 var players = [player1, player2]
 var nextEmpty = new Array(columns).fill(rows - 1)
 
