@@ -107,7 +107,7 @@ function setup_columns(board) {
                 .send({action:'create', data:{game: gameId, row: nextEmpty[col], player: thisPlayerId, column: col}})
         }
         var placeX = initialX + (col * columnWidth)
-        board.rect(columnWidth, boardHeight + gapToBoard)
+        var rect = board.rect(columnWidth, boardHeight + gapToBoard)
             .addClass('clickColumn')
             .attr({x: placeX - (columnWidth / 2), y: 0})
             .click(function(){ if (!this.hasClass('inActive')) { handle_click() }})
@@ -120,7 +120,7 @@ function setup_columns(board) {
         $(document).keypress(function(e) {
           // 48 is ascii for 0
           if(e.which == (48+col+1)) {
-            handle_click()
+            if (!rect.hasClass('inActive')) { handle_click() }
           }
         })
     }
